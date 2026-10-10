@@ -1,0 +1,20 @@
+# Example scenario: price-time priority, partial fills, market order, cancel
+# Build the book
+LIMIT BUY  1  99 10
+LIMIT SELL 2 101  3
+LIMIT SELL 3 102  5
+LIMIT SELL 4 101  4
+PRINT
+
+# Buy 5 @ 101: fills 3 from #2 (older), then 2 from #4
+LIMIT BUY 5 101 5
+PRINT
+
+# Exercise: market sell 12 -> what trades happen? what is left?
+MARKET SELL 6 12
+PRINT
+
+# Cancel a resting order
+CANCEL 3
+CANCEL 3
+PRINT
