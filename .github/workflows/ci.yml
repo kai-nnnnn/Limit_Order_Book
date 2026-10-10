@@ -5,7 +5,7 @@ jobs:
     strategy: { matrix: { os: [ubuntu-latest, macos-latest] } }
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_FLAGS="-fsanitize=address,undefined"
       - run: cmake --build build -j
       - run: ctest --test-dir build --output-on-failure
